@@ -1,0 +1,477 @@
+/* =============================================
+   MediGlobal — Healthcare Medical Tourism
+   Custom Styles
+   ============================================= */
+
+/* Smooth scroll & base */
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F8FAFC; }
+::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%,  100% { transform: translateY(0px); }
+  50%        { transform: translateY(-10px); }
+}
+
+@keyframes floatDelay {
+  0%,  100% { transform: translateY(0px); }
+  50%        { transform: translateY(-10px); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+/* Scroll-triggered fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.10s; }
+.delay-2 { transition-delay: 0.20s; }
+.delay-3 { transition-delay: 0.30s; }
+.delay-4 { transition-delay: 0.40s; }
+.delay-5 { transition-delay: 0.50s; }
+
+/* Float for hero badges */
+.animate-float       { animation: float 4s ease-in-out infinite; }
+.animate-float-delay { animation: floatDelay 4s ease-in-out 1.2s infinite; }
+
+/* =============================================
+   HEADER
+   ============================================= */
+
+#site-header {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+#site-header.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile nav */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+#mobile-menu.open {
+  max-height: 520px;
+}
+
+/* =============================================
+   HERO — Video Background
+   ============================================= */
+
+/* Ensure video fills and covers the section */
+#home video {
+  min-width: 100%;
+  min-height: 100%;
+  object-position: center center;
+}
+
+/* Fallback gradient if video fails to load */
+#home {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating trust cards (kept for other sections) */
+.trust-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.42);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  border: 2px solid #2563EB;
+  color: #2563EB;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn-outline:hover {
+  background: #2563EB;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   CARDS
+   ============================================= */
+
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 44px rgba(37, 99, 235, 0.10);
+}
+
+/* Image zoom inside cards */
+.img-zoom-wrap {
+  overflow: hidden;
+}
+.img-zoom-wrap img {
+  transition: transform 0.5s ease;
+}
+.img-zoom-wrap:hover img {
+  transform: scale(1.07);
+}
+
+/* Section label / divider */
+.section-bar {
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563EB, #0EA5E9);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+.section-bar.left { margin: 0; }
+
+/* =============================================
+   WHY CHOOSE US — panel layout
+   ============================================= */
+
+.why-panel {
+  background: #F5F4EF;
+}
+
+.why-doctor-wrap {
+  background: transparent;
+}
+
+/* On mobile the doctor image sits below the content */
+@media (max-width: 1023px) {
+  .why-doctor-wrap {
+    padding-top: 0;
+    max-height: 280px;
+    overflow: hidden;
+  }
+  .why-doctor-wrap img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
+/* =============================================
+   TREATMENT CARDS — icon hover
+   ============================================= */
+
+.treat-icon-wrap {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.treatment-card:hover .treat-icon-wrap {
+  background: #2563EB;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+.treatment-card:hover .treat-icon {
+  color: #fff !important;
+}
+
+/* =============================================
+   TREATMENT CARDS — new minimal style
+   ============================================= */
+
+.treat-new-card {
+  min-height: 180px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.treat-new-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* Hoverable cards: white default → dark navy on hover */
+.treat-hoverable {
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.treat-hoverable h3,
+.treat-hoverable p {
+  transition: color 0.3s ease;
+}
+.treat-hoverable > div {
+  transition: background-color 0.3s ease;
+}
+.treat-hoverable > div svg {
+  transition: color 0.3s ease;
+}
+
+.treat-hoverable:hover {
+  background-color: #1e3a5f !important;
+  border-color: transparent !important;
+}
+.treat-hoverable:hover h3 {
+  color: #ffffff;
+}
+.treat-hoverable:hover p {
+  color: rgba(255, 255, 255, 0.70);
+}
+.treat-hoverable:hover > div {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+.treat-hoverable:hover > div svg {
+  color: #ffffff !important;
+}
+
+/* =============================================
+   SERVICES — image card with overlay
+   ============================================= */
+
+.svc-img-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.svc-img-card:hover img {
+  transform: scale(1.04);
+}
+
+.svc-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(
+    to top,
+    rgba(5, 10, 25, 0.88) 0%,
+    rgba(5, 10, 25, 0.55) 55%,
+    transparent 100%
+  );
+}
+
+/* =============================================
+   PROCESS TIMELINE
+   ============================================= */
+
+.timeline-line {
+  background: linear-gradient(90deg, #2563EB, #0EA5E9, #10B981);
+}
+
+/* =============================================
+   TESTIMONIAL CAROUSEL
+   ============================================= */
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.testimonial-slide {
+  flex-shrink: 0;
+}
+
+/* =============================================
+   FAQ ACCORDION
+   ============================================= */
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.35s ease;
+}
+.faq-body.open {
+  max-height: 280px;
+}
+
+.faq-icon {
+  transition: transform 0.35s ease;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* =============================================
+   FORM
+   ============================================= */
+
+.form-field {
+  border: 1.5px solid #E2E8F0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-field:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+.form-field.err {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.field-error {
+  display: none;
+  color: #EF4444;
+  font-size: 11.5px;
+  margin-top: 4px;
+}
+.field-error.show { display: block; }
+
+#form-success { display: none; }
+#form-success.show { display: flex; }
+
+/* =============================================
+   HOSPITAL CARDS
+   ============================================= */
+
+.hospital-card .hcard-img img {
+  transition: transform 0.5s ease;
+}
+.hospital-card:hover .hcard-img img {
+  transform: scale(1.06);
+}
+
+.badge-jci   { background: linear-gradient(135deg, #10B981, #059669); }
+.badge-iso   { background: linear-gradient(135deg, #2563EB, #1D4ED8); }
+
+.spec-tag {
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* =============================================
+   LOGO STRIP
+   ============================================= */
+
+.logo-item {
+  opacity: 0.42;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+.logo-item:hover { opacity: 1; }
+
+/* =============================================
+   CTA SECTION
+   ============================================= */
+
+.cta-dots {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.14) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+.footer-dark {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* =============================================
+   BACK TO TOP
+   ============================================= */
+
+#back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* =============================================
+   STARS RATING
+   ============================================= */
+
+.stars { color: #F59E0B; letter-spacing: 1px; }
+
+/* =============================================
+   ACCREDITATION TAG ON HOSPITAL
+   ============================================= */
+
+.accred {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: 0.5px;
+}
+
+/* =============================================
+   RESPONSIVE HELPERS
+   ============================================= */
+
+@media (max-width: 640px) {
+  .hero-h1 { font-size: 2rem; line-height: 1.2; }
+}
+
+@media (max-width: 768px) {
+  .section-bar { margin: 0 auto; }
+}
