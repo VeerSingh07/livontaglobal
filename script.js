@@ -9,12 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
      1. STICKY HEADER SHADOW
   ========================================== */
   const header = document.getElementById('site-header');
+  const backToTop = document.getElementById('back-to-top');
 
   const onScroll = () => {
     header.classList.toggle('scrolled', window.scrollY > 24);
-    backToTop.classList.toggle('show', window.scrollY > 420);
+
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+
+    if (backToTop) {
+      backToTop.classList.toggle('show', scrollPercent >= 80);
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
 
   /* ==========================================
@@ -163,99 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================
-     7. TESTIMONIAL CAROUSEL
-  ========================================== */
-  const track     = document.getElementById('t-track');
-  const slides    = Array.from(document.querySelectorAll('.t-slide'));
-  const dotsWrap  = document.getElementById('t-dots');
-  const prevBtn   = document.getElementById('t-prev');
-  const nextBtn   = document.getElementById('t-next');
-
-  let currentGroup  = 0;
-  let autoTimer     = null;
-  let perView       = 1;
-  let totalGroups   = 1;
-  let slideW        = 0;
-
-  const GAP = 24;
-
-  function calcPerView() {
-    const w = window.innerWidth;
-    if (w >= 1024) return 3;
-    if (w >= 640)  return 2;
-    return 1;
-  }
-
-  function initCarousel() {
-    perView     = calcPerView();
-    totalGroups = Math.ceil(slides.length / perView);
-    const cw    = track.parentElement.offsetWidth;
-    slideW      = (cw - GAP * (perView - 1)) / perView;
-
-    slides.forEach(s => {
-      s.style.width      = slideW + 'px';
-      s.style.flexShrink = '0';
-    });
-
-    buildDots();
-    goTo(0, false);
-  }
-
-  function buildDots() {
-    dotsWrap.innerHTML = '';
-    for (let i = 0; i < totalGroups; i++) {
-      const d = document.createElement('button');
-      d.setAttribute('aria-label', `Slide group ${i + 1}`);
-      d.addEventListener('click', () => { goTo(i); resetAuto(); });
-      dotsWrap.appendChild(d);
-    }
-    updateDots();
-  }
-
-  function updateDots() {
-    dotsWrap.querySelectorAll('button').forEach((d, i) => {
-      if (i === currentGroup) {
-        d.className = 'h-2.5 w-6 rounded-full bg-blue-600 transition-all duration-300';
-      } else {
-        d.className = 'h-2.5 w-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300';
-      }
-    });
-  }
-
-  function goTo(idx, animate = true) {
-    currentGroup = Math.max(0, Math.min(idx, totalGroups - 1));
-    const offset = currentGroup * perView * (slideW + GAP);
-    track.style.transition = animate ? 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
-    track.style.transform  = `translateX(-${offset}px)`;
-    updateDots();
-  }
-
-  function next() { goTo(currentGroup < totalGroups - 1 ? currentGroup + 1 : 0); }
-  function prev() { goTo(currentGroup > 0 ? currentGroup - 1 : totalGroups - 1); }
-
-  function startAuto() {
-    autoTimer = setInterval(next, 5000);
-  }
-  function resetAuto() {
-    clearInterval(autoTimer);
-    startAuto();
-  }
-
-  nextBtn.addEventListener('click', () => { next(); resetAuto(); });
-  prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
-
-  initCarousel();
-  startAuto();
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initCarousel, 200);
-  });
-
-
-  /* ==========================================
-     8. CONSULTATION FORM VALIDATION
+     7. CONSULTATION FORM VALIDATION
   ========================================== */
   const form       = document.getElementById('consult-form');
   const formWrap   = document.getElementById('form-wrap');
@@ -322,24 +238,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================
-     9. BACK TO TOP BUTTON
+     8. BACK TO TOP BUTTON
   ========================================== */
-  const backToTop = document.getElementById('back-to-top');
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  }
 
 
   /* ==========================================
-     10. FOOTER YEAR
+     9. FOOTER YEAR
   ========================================== */
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
   /* ==========================================
-     11. LAZY LOAD IMAGES (data-src)
+     10. LAZY LOAD IMAGES (data-src)
   ========================================== */
   if ('IntersectionObserver' in window) {
     const lazyImgs = document.querySelectorAll('img[data-src]');
