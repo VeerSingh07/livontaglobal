@@ -27,8 +27,8 @@
   <meta name="twitter:image"       content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80">
 
   <!-- Favicon (inline SVG data URI) -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><path d='M16 8v16M8 16h16' stroke='white' stroke-width='3' stroke-linecap='round'/></svg>">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="shortcut icon" href="assets/images/favicon.png">
 
   <!-- Google Fonts — Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,10 +43,10 @@
         extend: {
           colors: {
             primary: {
-              DEFAULT: '#2563EB',
-              50:  '#EFF6FF',
-              100: '#DBEAFE',
-              700: '#1D4ED8',
+              DEFAULT: '#1D538E',
+              50:  '#EBF4FF',
+              100: '#D0E6F7',
+              700: '#143C65',
             },
             secondary: '#0EA5E9',
             accent:    '#10B981',
@@ -67,6 +67,10 @@
     };
   </script>
 
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -78,66 +82,56 @@
      STICKY HEADER
 ============================================================ -->
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
+
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
 
     <div class="flex items-center justify-between h-16 lg:h-20">
 
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-2.5 flex-shrink-0" aria-label="MediGlobal — home">
-        <img src="assets/images/logo.png" alt="MediGlobal Logo" class="h-14">
+        <img src="assets/images/logo.png" alt="MediGlobal Logo" class="lg:h-14 h-10">
       </a>
 
-      <!-- Desktop navigation -->
-      <ul class="hidden lg:flex items-center gap-0.5" role="list">
-        <li><a href="#home"         class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Home</a></li>
-        <li><a href="#treatments"   class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Treatments</a></li>
-        <li><a href="#services"     class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Services</a></li>
-        <li><a href="#hospitals"    class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Hospitals</a></li>
-        <li><a href="#testimonials" class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Testimonials</a></li>
-        <li><a href="#faq"          class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">FAQ</a></li>
-        <li><a href="#contact"      class="px-4 py-2 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-lg transition-all duration-200">Contact</a></li>
-      </ul>
+      <!-- CTA + contact chips + hamburger -->
+      <div class="flex items-center gap-2 sm:gap-3">
 
-      <!-- CTA + hamburger -->
-      <div class="flex items-center gap-3">
+        <!-- Phone chip -->
+        <a href="tel:+918733025959" class="contact-chip" aria-label="Call us">
+          <span class="contact-chip-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.0497 6C15.0264 6.19057 15.924 6.66826 16.6277 7.37194C17.3314 8.07561 17.8091 8.97326 17.9997 9.95M14.0497 2C16.0789 2.22544 17.9713 3.13417 19.4159 4.57701C20.8606 6.01984 21.7717 7.91101 21.9997 9.94M10.2266 13.8631C9.02506 12.6615 8.07627 11.3028 7.38028 9.85323C7.32041 9.72854 7.29048 9.66619 7.26748 9.5873C7.18576 9.30695 7.24446 8.96269 7.41447 8.72526C7.46231 8.65845 7.51947 8.60129 7.63378 8.48698C7.98338 8.13737 8.15819 7.96257 8.27247 7.78679C8.70347 7.1239 8.70347 6.26932 8.27247 5.60643C8.15819 5.43065 7.98338 5.25585 7.63378 4.90624L7.43891 4.71137C6.90747 4.17993 6.64174 3.91421 6.35636 3.76987C5.7888 3.4828 5.11854 3.4828 4.55098 3.76987C4.2656 3.91421 3.99987 4.17993 3.46843 4.71137L3.3108 4.86901C2.78117 5.39863 2.51636 5.66344 2.31411 6.02348C2.08969 6.42298 1.92833 7.04347 1.9297 7.5017C1.93092 7.91464 2.01103 8.19687 2.17124 8.76131C3.03221 11.7947 4.65668 14.6571 7.04466 17.045C9.43264 19.433 12.295 21.0575 15.3284 21.9185C15.8928 22.0787 16.1751 22.1588 16.588 22.16C17.0462 22.1614 17.6667 22 18.0662 21.7756C18.4263 21.5733 18.6911 21.3085 19.2207 20.7789L19.3783 20.6213C19.9098 20.0898 20.1755 19.8241 20.3198 19.5387C20.6069 18.9712 20.6069 18.3009 20.3198 17.7333C20.1755 17.448 19.9098 17.1822 19.3783 16.6508L19.1835 16.4559C18.8339 16.1063 18.6591 15.9315 18.4833 15.8172C17.8204 15.3862 16.9658 15.3862 16.3029 15.8172C16.1271 15.9315 15.9523 16.1063 15.6027 16.4559C15.4884 16.5702 15.4313 16.6274 15.3644 16.6752C15.127 16.8453 14.7828 16.904 14.5024 16.8222C14.4235 16.7992 14.3612 16.7693 14.2365 16.7094C12.7869 16.0134 11.4282 15.0646 10.2266 13.8631Z"/>
+            </svg>
+          </span>
+          <span class="contact-chip-text">+91-8733025959</span>
+        </a>
+
+        <!-- Email chip -->
+        <a href="mailto:livontaglobal@gmail.com" class="contact-chip" aria-label="Email us">
+          <span class="contact-chip-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.5 18L14.8571 12M9.14286 12L2.50003 18M2 7L10.1649 12.7154C10.8261 13.1783 11.1567 13.4097 11.5163 13.4993C11.8339 13.5785 12.1661 13.5785 12.4837 13.4993C12.8433 13.4097 13.1739 13.1783 13.8351 12.7154L22 7M6.8 20H17.2C18.8802 20 19.7202 20 20.362 19.673C20.9265 19.3854 21.3854 18.9265 21.673 18.362C22 17.7202 22 16.8802 22 15.2V8.8C22 7.11984 22 6.27976 21.673 5.63803C21.3854 5.07354 20.9265 4.6146 20.362 4.32698C19.7202 4 18.8802 4 17.2 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V15.2C2 16.8802 2 17.7202 2.32698 18.362C2.6146 18.9265 3.07354 19.3854 3.63803 19.673C4.27976 20 5.11984 20 6.8 20Z"/>
+            </svg>
+          </span>
+          <span class="contact-chip-text">livontaglobal@gmail.com</span>
+        </a>
+
+        <!-- Get Free Consultation -->
         <a href="#contact"
-           class="hidden sm:inline-flex items-center gap-1.5 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl">
+           class="hidden sm:inline-flex items-center gap-1.5 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full">
           Get Free Consultation
         </a>
+
         <button id="menu-btn"
-                class="lg:hidden p-2 rounded-lg text-muted hover:text-primary hover:bg-primary-50 transition-colors"
-                aria-label="Toggle navigation menu"
+                class="drawer-hamburger"
+                aria-label="Open navigation menu"
                 aria-expanded="false"
-                aria-controls="mobile-menu">
-          <svg id="icon-open"  class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
+                aria-controls="nav-drawer">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div><!-- /flex row -->
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-      <div class="border-t border-border py-4 pb-5">
-        <ul class="flex flex-col gap-0.5 mb-4" role="list">
-          <li><a href="#home"         class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Home</a></li>
-          <li><a href="#treatments"   class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Treatments</a></li>
-          <li><a href="#services"     class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Services</a></li>
-          <li><a href="#hospitals"    class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Hospitals</a></li>
-          <li><a href="#testimonials" class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Testimonials</a></li>
-          <li><a href="#faq"          class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">FAQ</a></li>
-          <li><a href="#contact"      class="block px-4 py-2.5 text-sm font-medium text-muted hover:text-primary hover:bg-primary-50 rounded-xl transition-all">Contact</a></li>
-        </ul>
-        <div class="px-4">
-          <a href="#contact" class="block text-center btn-primary text-white text-sm font-semibold py-3 rounded-xl">
-            Get Free Consultation
-          </a>
-        </div>
-      </div>
-    </div>
   </nav>
 </header>
 
@@ -161,22 +155,15 @@
   ></video>
 
   <!-- Dark gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/60 to-dark/40" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-dark/60 via-dark/50 to-dark/30" aria-hidden="true"></div>
 
   <!-- Content -->
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
     <div class="max-w-3xl fade-up">
 
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-        <span class="w-2 h-2 bg-accent rounded-full animate-pulse" aria-hidden="true"></span>
-        Trusted by 5,000+ Patients Worldwide
-      </div>
-
       <!-- Headline -->
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-        World-Class Healthcare Treatment at
-        <span class="text-secondary"> Trusted Hospitals</span>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal text-white leading-tight mb-6">
+        Get Advanced Medical Treatment In India From Tanzania
       </h1>
 
       <p class="text-base md:text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
@@ -184,103 +171,98 @@
       </p>
 
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 mb-14">
+      <div class="flex flex-col sm:flex-row gap-4">
         <a href="#contact"
-           class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-8 py-3.5 rounded-xl text-base">
+           class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-5 py-2.5 rounded-full text-sm">
           Get Free Consultation
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
           </svg>
         </a>
         <a href="#treatments"
-           class="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-3.5 rounded-xl text-base hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+           class="btn-outline-hero inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-base">
           Explore Treatments
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
           </svg>
         </a>
       </div>
-
-      <!-- Trust stats -->
-      <div id="hero-stats" class="flex flex-wrap gap-8">
-
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-xl font-bold text-white leading-none">
-              <span class="counter" data-count="5000">0</span><span>+</span>
-            </p>
-            <p class="text-xs text-white/65 mt-0.5">Patients Assisted</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-xl font-bold text-white leading-none">
-              <span class="counter" data-count="100">0</span><span>+</span>
-            </p>
-            <p class="text-xs text-white/65 mt-0.5">Partner Hospitals</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 bg-white/15 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-xl font-bold text-white leading-none">
-              <span class="counter" data-count="50">0</span><span>+</span>
-            </p>
-            <p class="text-xs text-white/65 mt-0.5">Medical Specialties</p>
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
+</section>
 
 
+<!-- ============================================================
+     STATS COUNTER STRIP
+============================================================ -->
+<section id="stats-section" class="bg-white py-14 lg:py-20 border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 lg:divide-x-2 divide-gray-100">
+
+      <!-- Stat 1 -->
+      <div class="stat-block fade-up">
+        <p class="stat-number">
+          <span class="counter" data-count="5000">0</span><span>+</span>
+        </p>
+        <p class="stat-label">Patients Assisted</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stat-block fade-up delay-1">
+        <p class="stat-number">
+          <span class="counter" data-count="100">0</span><span>+</span>
+        </p>
+        <p class="stat-label">Partner Hospitals</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat-block fade-up delay-2">
+        <p class="stat-number">
+          <span class="counter" data-count="50">0</span><span>+</span>
+        </p>
+        <p class="stat-label">Medical Specialties</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat-block fade-up delay-3">
+        <p class="stat-number">
+          <span class="counter" data-count="98">0</span><span>%</span>
+        </p>
+        <p class="stat-label">Patient Satisfaction</p>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 
 <!-- ============================================================
      2. WHY CHOOSE US
 ============================================================ -->
-<section id="why-us" class="py-20 lg:py-28 bg-white">
+<section id="why-us" class="py-16 sm:py-20 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Section header -->
     <div class="text-center mb-10 fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold text-dark mb-3">Why Choose Us?</h2>
+      <h2 class="text-3xl md:text-5xl lg:text-6xl font-normal text-dark mb-3">Why Choose Us?</h2>
       <p class="text-muted text-base md:text-lg">Your health, our commitment — here's what sets us apart</p>
     </div>
 
     <!-- Large panel -->
     <div class="why-panel rounded-3xl overflow-hidden fade-up">
-      <div class="grid lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_400px] items-end">
+      <div class="grid md:grid-cols-[1fr_340px] xl:grid-cols-[1fr_400px] items-end">
 
         <!-- Left: content -->
         <div class="p-8 md:p-12 lg:p-14">
-          <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-dark leading-snug mb-4">
-            Let's Know about our<br>main goal
+          <h3 class="text-2xl md:text-3xl lg:text-5xl font-normal text-dark leading-snug mb-4 max-w-xl">
+            Let's Know about our main goal
           </h3>
           <p class="text-muted text-sm md:text-base leading-relaxed mb-8 max-w-lg">
             We aim to offer clear and comprehensive information about our services, conditions treated, and treatment options. This ensures that patients can make informed decisions about their healthcare.
           </p>
 
           <!-- 6 feature items — 2 columns -->
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+          <div class="grid lg:grid-cols-2 gap-x-8 gap-y-4">
 
             <div class="flex items-center gap-3">
               <div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
@@ -340,12 +322,11 @@
         </div>
 
         <!-- Right: doctor image -->
-        <div class="why-doctor-wrap flex items-end justify-center lg:justify-end h-full">
+        <div class="why-doctor-wrap flex items-end justify-center lg:justify-end h-full relative">
           <img
-            src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=480&q=85"
+            src="assets/images/whyussec.jpg"
             alt="Healthcare professional in white coat"
-            class="w-full h-full max-w-xs lg:max-w-none object-cover object-top"
-            style="max-height: 450px;"
+            class="w-full h-full md:max-w-xs lg:max-w-none object-cover object-top md:absolute top-0 left-0 max-h-[550px] md:max-h-[unset]"
             loading="lazy"
           >
         </div>
@@ -360,14 +341,19 @@
 <!-- ============================================================
      3. TREATMENT CATEGORIES
 ============================================================ -->
-<section id="treatments" class="py-20 lg:py-28 bg-surface">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="treatments" class="py-16 sm:py-20 lg:py-28 bg-surface relative overflow-hidden">
+  <!-- Background hospital image at 20% opacity -->
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1400&q=80"
+         alt="" class="w-full h-full object-cover" style="opacity:0.1;">
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Split header: heading left, description right -->
     <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-end mb-14 fade-up">
       <div>
         <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-4">Medical Treatments</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark leading-tight">Treatment Categories</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-normal text-dark leading-tight">Treatment Categories</h2>
       </div>
       <div class="lg:pb-2">
         <p class="text-muted text-base md:text-lg leading-relaxed">
@@ -379,7 +365,7 @@
     <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
 
       <!-- Cardiology: heart icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up flex flex-col">
         <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
@@ -387,10 +373,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Cardiology</h3>
         <p class="text-muted text-sm leading-relaxed">Advanced heart care — bypass surgery, angioplasty, valve repair, and cardiac rehab.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Orthopedics: bone/joint icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-1">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-1 flex flex-col">
         <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
@@ -398,10 +385,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Orthopedics</h3>
         <p class="text-muted text-sm leading-relaxed">Joint replacements, sports injuries, and bone reconstruction at specialist centres.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Oncology: beaker/lab research icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-2">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-2 flex flex-col">
         <div class="w-11 h-11 bg-purple-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
@@ -409,10 +397,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Oncology</h3>
         <p class="text-muted text-sm leading-relaxed">Comprehensive cancer care — chemo, radiation, immunotherapy, and targeted treatments.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- IVF & Fertility: family/users icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-3">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-3 flex flex-col">
         <div class="w-11 h-11 bg-pink-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -420,10 +409,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">IVF &amp; Fertility</h3>
         <p class="text-muted text-sm leading-relaxed">State-of-the-art fertility treatments with high success rates at globally recognised clinics.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Neurology: brain/neural activity (EEG pulse) icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up flex flex-col">
         <div class="w-11 h-11 bg-indigo-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3l3-9 4 18 3-9h5"/>
@@ -431,10 +421,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Neurology</h3>
         <p class="text-muted text-sm leading-relaxed">Brain and nervous system disorders — stroke, Parkinson's, epilepsy, and brain tumour treatment.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Organ Transplant: refresh/cycle (organ exchange) icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-1">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-1 flex flex-col">
         <div class="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -442,10 +433,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Organ Transplant</h3>
         <p class="text-muted text-sm leading-relaxed">Kidney, liver, heart, and bone marrow transplants at accredited transplant centres with high survival rates.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Cosmetic Surgery: scissors icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-2">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-2 flex flex-col">
         <div class="w-11 h-11 bg-fuchsia-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-fuchsia-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
@@ -453,10 +445,11 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Cosmetic Surgery</h3>
         <p class="text-muted text-sm leading-relaxed">Rhinoplasty, facelifts, liposuction, and other procedures by world-renowned cosmetic surgeons.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
       <!-- Spine Surgery: vertical spine column icon -->
-      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-3">
+      <article class="treat-new-card treat-hoverable card-lift bg-white rounded-2xl p-6 border border-gray-100 group fade-up delay-3 flex flex-col">
         <div class="w-11 h-11 bg-cyan-50 rounded-xl flex items-center justify-center mb-5">
           <svg class="w-5 h-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16M8 8h.01M8 12h.01M8 16h.01M16 8h.01M16 12h.01M16 16h.01"/>
@@ -464,6 +457,7 @@
         </div>
         <h3 class="font-bold text-dark text-base mb-2">Spine Surgery</h3>
         <p class="text-muted text-sm leading-relaxed">Minimally invasive spinal surgery — disc replacement, decompression, and fusion procedures.</p>
+        <a href="#contact" class="treat-learn-more mt-auto">Learn More <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18L18 6M18 14V6H10"/></svg></a>
       </article>
 
     </div>
@@ -477,20 +471,19 @@
 <section id="services" class="py-20 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center mb-16 fade-up">
+    <div class="text-center mb-8 md:mb-16 fade-up">
       <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">Our Services</span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">Everything You Need</h2>
-      <div class="section-bar mb-5"></div>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-normal text-dark mb-4">Everything You Need</h2>
       <p class="text-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
         We handle all the logistics so you can focus entirely on your health and recovery.
       </p>
     </div>
 
     <!-- Service row 1: Medical Visa Assistance -->
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 fade-up">
+    <div class="grid lg:grid-cols-2 gap-7 sm:gap-10 lg:gap-16 items-start mb-12 md:mb-16 fade-up">
 
       <!-- Left: text only -->
-      <div class="pt-8">
+      <div class="md:pt-8">
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-dark leading-snug mb-4">
           Medical Visa Assistance
         </h3>
@@ -499,19 +492,19 @@
         </p>
         <div class="flex items-end justify-between gap-4 mt-4">
           <a href="#contact"
-             class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-primary-700 transition-colors whitespace-nowrap">
+             class="flex-shrink-0 inline-flex items-center gap-2 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap">
             Get Started
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
             </svg>
           </a>
         </div>
       </div>
 
       <!-- Right: image card with overlay -->
-      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-white p-2">
+      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] bg-white p-2">
         <img
-          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80"
+          src="assets/images/sv-img2.jpg"
           alt="Medical visa assistance — doctor reviewing documents"
           class="w-full h-full object-cover rounded-xl"
           loading="lazy"
@@ -520,8 +513,8 @@
     </div>
 
     <!-- Service row 2: Hospital Selection -->
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 fade-up">
-      <div class="pt-8">
+    <div class="grid lg:grid-cols-2 gap-7 sm:gap-10 lg:gap-16 items-start mb-12 md:mb-16 fade-up">
+      <div class="md:pt-8">
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-dark leading-snug mb-4">
           Hospital Selection
         </h3>
@@ -530,17 +523,17 @@
         </p>
         <div class="flex items-end justify-between gap-4 mt-4">
           <a href="#contact"
-             class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-primary-700 transition-colors whitespace-nowrap">
+             class="flex-shrink-0 inline-flex items-center gap-2 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap">
             Get Started
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
             </svg>
           </a>
         </div>
       </div>
-      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-white p-2">
+      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] bg-white p-2">
         <img
-          src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=700&q=80"
+          src="assets/images/sv-img4.jpg"
           alt="Internationally accredited hospital facility"
           class="w-full h-full object-cover rounded-xl"
           loading="lazy"
@@ -549,8 +542,8 @@
     </div>
 
     <!-- Service row 3: Travel Support -->
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 fade-up">
-      <div class="pt-8">
+    <div class="grid lg:grid-cols-2 gap-7 sm:gap-10 lg:gap-16 items-start mb-12 md:mb-16 fade-up">
+      <div class="md:pt-8">
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-dark leading-snug mb-4">
           Travel Support
         </h3>
@@ -559,15 +552,15 @@
         </p>
         <div class="flex items-end justify-between gap-4 mt-4">
           <a href="#contact"
-             class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-primary-700 transition-colors whitespace-nowrap">
+             class="flex-shrink-0 inline-flex items-center gap-2 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap">
             Get Started
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
             </svg>
           </a>
         </div>
       </div>
-      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-white p-2">
+      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] bg-white p-2">
         <img
           src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80"
           alt="Travel support — international flight and airport"
@@ -578,8 +571,8 @@
     </div>
 
     <!-- Service row 4: Doctor Consultation -->
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 fade-up">
-      <div class="pt-8">
+    <div class="grid lg:grid-cols-2 gap-7 sm:gap-10 lg:gap-16 items-start mb-12 md:mb-16 fade-up">
+      <div class="md:pt-8">
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-dark leading-snug mb-4">
           Doctor Consultation
         </h3>
@@ -588,17 +581,17 @@
         </p>
         <div class="flex items-end justify-between gap-4 mt-4">
           <a href="#contact"
-             class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-primary-700 transition-colors whitespace-nowrap">
+             class="flex-shrink-0 inline-flex items-center gap-2 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap">
             Get Started
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
             </svg>
           </a>
         </div>
       </div>
-      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-white p-2">
+      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] bg-white p-2">
         <img
-          src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=700&q=80"
+          src="assets/images/sv-img5.jpg"
           alt="Doctor consultation with patient"
           class="w-full h-full object-cover rounded-xl"
           loading="lazy"
@@ -607,8 +600,8 @@
     </div>
 
     <!-- Service row 5: Accommodation Support -->
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16 fade-up">
-      <div class="pt-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start fade-up">
+      <div class="md:pt-8">
         <h3 class="text-2xl sm:text-3xl md:text-4xl font-medium text-dark leading-snug mb-4">
           Accommodation Support
         </h3>
@@ -617,15 +610,15 @@
         </p>
         <div class="flex items-end justify-between gap-4 mt-4">
           <a href="#contact"
-             class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-primary-700 transition-colors whitespace-nowrap">
+             class="flex-shrink-0 inline-flex items-center gap-2 btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full whitespace-nowrap">
             Get Started
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
             </svg>
           </a>
         </div>
       </div>
-      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[400px] bg-white p-2">
+      <div class="svc-img-card rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] bg-white p-2">
         <img
           src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80"
           alt="Comfortable accommodation near hospital"
@@ -641,98 +634,117 @@
 <!-- ============================================================
      5. HOW IT WORKS — TREATMENT PROCESS
 ============================================================ -->
-<section id="process" class="py-20 lg:py-28 bg-surface">
+<section id="process" class="py-20 lg:py-28 bg-surface overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="text-center mb-16 fade-up">
+    <!-- Header -->
+    <div class="text-center mb-14 fade-up">
       <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">Simple Process</span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">How It Works</h2>
-      <div class="section-bar mb-5"></div>
       <p class="text-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-        Getting world-class medical care abroad is simpler than you think. Our streamlined process gets you from inquiry to recovery smoothly.
+        Getting world-class medical care abroad is simpler than you think.
       </p>
     </div>
 
-    <div class="relative">
-      <!-- Connecting line (desktop only) -->
-      <div class="hidden lg:block absolute top-[52px] left-0 right-0 h-0.5 timeline-line mx-16" aria-hidden="true"></div>
+    <!-- 2-col layout: image left | steps right -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
-
-        <!-- Step 1 -->
-        <div class="flex flex-col items-center text-center fade-up">
-          <div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-primary mb-1">Step 01</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Submit Inquiry</h4>
-          <p class="text-muted text-xs leading-relaxed">Fill in your details and describe your medical condition.</p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="flex flex-col items-center text-center fade-up delay-1">
-          <div class="w-14 h-14 bg-white border-2 border-primary rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-muted mb-1">Step 02</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Medical Review</h4>
-          <p class="text-muted text-xs leading-relaxed">Our doctors review your records and recommend the best treatment options.</p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="flex flex-col items-center text-center fade-up delay-2">
-          <div class="w-14 h-14 bg-white border-2 border-secondary rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-muted mb-1">Step 03</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Treatment Plan</h4>
-          <p class="text-muted text-xs leading-relaxed">Receive a detailed plan with cost estimates and a clear timeline.</p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="flex flex-col items-center text-center fade-up delay-3">
-          <div class="w-14 h-14 bg-white border-2 border-secondary rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-muted mb-1">Step 04</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Visa &amp; Travel</h4>
-          <p class="text-muted text-xs leading-relaxed">We handle visa applications, flights, and accommodation logistics.</p>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="flex flex-col items-center text-center fade-up delay-4">
-          <div class="w-14 h-14 bg-white border-2 border-accent rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-muted mb-1">Step 05</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Hospital Admission</h4>
-          <p class="text-muted text-xs leading-relaxed">Arrive and get admitted with your personal coordinator by your side.</p>
-        </div>
-
-        <!-- Step 6 -->
-        <div class="flex flex-col items-center text-center fade-up delay-5">
-          <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mb-4 shadow-lg relative z-10">
-            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-            </svg>
-          </div>
-          <p class="text-xs font-semibold text-accent mb-1">Step 06</p>
-          <h4 class="font-semibold text-dark text-sm mb-2">Recovery &amp; Follow-Up</h4>
-          <p class="text-muted text-xs leading-relaxed">Post-treatment care, remote follow-ups, and long-term support.</p>
+      <!-- LEFT: image with floating overlays -->
+      <div class="relative fade-up">
+        <div class="rounded-3xl overflow-hidden h-[420px] md:h-[520px]">
+          <img
+            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=80"
+            alt="Medical coordinator assisting a patient"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          >
         </div>
 
       </div>
-    </div>
+
+      <!-- RIGHT: vertical step list -->
+      <div class="fade-up delay-1 flex flex-col divide-y divide-gray-100">
+
+        <!-- Step 1 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-primary/10">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Submit Inquiry</h4>
+            <p class="hiw-desc">Fill in your details and describe your medical condition to get started.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-blue-50">
+            <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Medical Review</h4>
+            <p class="hiw-desc">Our doctors review your records and recommend the best treatment options.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-cyan-50">
+            <svg class="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Treatment Plan</h4>
+            <p class="hiw-desc">Receive a detailed plan with cost estimates and a clear timeline.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-indigo-50">
+            <svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Visa &amp; Travel</h4>
+            <p class="hiw-desc">We handle visa applications, flights, and accommodation logistics.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-emerald-50">
+            <svg class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Hospital Admission</h4>
+            <p class="hiw-desc">Arrive and get admitted with your personal coordinator by your side.</p>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="hiw-step">
+          <div class="hiw-icon bg-rose-50">
+            <svg class="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="hiw-title">Recovery &amp; Follow-Up</h4>
+            <p class="hiw-desc">Post-treatment care, remote follow-ups, and long-term support.</p>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div><!-- /grid -->
   </div>
 </section>
 
@@ -745,8 +757,7 @@
 
     <div class="text-center mb-14 fade-up">
       <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">Our Network</span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">Partner Hospitals</h2>
-      <div class="section-bar mb-5"></div>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-normal text-dark mb-4">Partner Hospitals</h2>
       <p class="text-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
         We partner exclusively with internationally accredited hospitals known for medical excellence, cutting-edge technology, and patient-centred care.
       </p>
@@ -938,16 +949,57 @@
 
     <!-- Logo strip -->
     <div class="border-t border-border pt-10 fade-up">
-      <p class="text-center text-muted text-sm font-medium mb-7">Trusted by leading healthcare institutions worldwide</p>
-      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-14">
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Apollo</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Bumrungrad</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Acibadem</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Charité</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Gleneagles</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Fortis</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Manipal</span>
-        <span class="logo-item font-bold text-dark text-lg tracking-tight">Wockhardt</span>
+      <p class="text-center text-muted text-sm font-medium mb-8">Trusted by leading healthcare institutions worldwide</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Apollo Hospitals">
+          <img src="https://upload.wikimedia.org/wikipedia/en/7/71/Apollo_Hospitals_Logo.svg"
+               alt="Apollo Hospitals" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Apollo</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Bumrungrad International">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Bumrungrad_International_Hospital_logo.png"
+               alt="Bumrungrad International" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Bumrungrad</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Acibadem Hospitals">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Acibadem_Logo.svg/320px-Acibadem_Logo.svg.png"
+               alt="Acibadem" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Acibadem</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Fortis Healthcare">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Fortis_Healthcare_logo.svg/320px-Fortis_Healthcare_logo.svg.png"
+               alt="Fortis Healthcare" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Fortis</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Gleneagles Hospital">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Parkway_Pantai_logo.svg/320px-Parkway_Pantai_logo.svg.png"
+               alt="Gleneagles" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Gleneagles</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Manipal Hospitals">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Manipal_Hospitals_logo.svg/320px-Manipal_Hospitals_logo.svg.png"
+               alt="Manipal Hospitals" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Manipal</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Wockhardt Hospitals">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Wockhardt_Logo.svg/320px-Wockhardt_Logo.svg.png"
+               alt="Wockhardt" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Wockhardt</span>
+        </a>
+
+        <a href="#hospitals" class="hospital-logo-item" aria-label="Charité Berlin">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Charite_Logo.svg/320px-Charite_Logo.svg.png"
+               alt="Charité" class="hospital-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="hospital-logo-fallback">Charité</span>
+        </a>
+
       </div>
     </div>
 
@@ -963,145 +1015,112 @@
 
     <div class="text-center mb-14 fade-up">
       <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">Patient Stories</span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">What Patients Say</h2>
-      <div class="section-bar mb-5"></div>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-normal text-dark mb-4">Real Stories, Real Results</h2>
       <p class="text-muted text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
         Real stories from real patients who trusted MediGlobal for their healthcare journey.
       </p>
     </div>
 
-    <!-- Carousel wrapper -->
-    <div class="fade-up">
-      <!-- Controls row -->
-      <div class="flex items-center justify-between mb-6">
-        <div id="t-dots" class="flex gap-2" aria-label="Testimonial slide indicators" role="tablist"></div>
-        <div class="flex gap-2">
-          <button id="t-prev" aria-label="Previous testimonials"
-            class="w-10 h-10 bg-white rounded-xl border border-border text-muted flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all shadow-sm">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button id="t-next" aria-label="Next testimonials"
-            class="w-10 h-10 bg-primary rounded-xl text-white flex items-center justify-center hover:bg-primary-700 transition-all shadow-sm">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+    <!-- Owl Carousel -->
+    <div class="owl-carousel testimonial-owl fade-up">
+
+      <!-- Slide 1 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face"
+               alt="James Wilson" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">James Wilson</p>
+            <p class="text-muted text-sm">United Kingdom · Cardiac Surgery</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
+          </div>
         </div>
+        <p class="text-muted text-sm leading-relaxed">
+          After my cardiac surgery at Apollo Hospitals arranged through MediGlobal, I'm living a completely normal life again. The entire process — from visa to discharge — was handled flawlessly.
+        </p>
       </div>
 
-      <!-- Slider -->
-      <div class="overflow-hidden" aria-live="polite" aria-atomic="true">
-        <div id="t-track" class="flex" style="gap: 24px;">
-
-          <!-- Slide 1 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "After my cardiac surgery at Apollo Hospitals arranged through MediGlobal, I'm living a completely normal life again. The entire process — from visa to discharge — was handled flawlessly."
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
-                     alt="James Wilson" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">James Wilson</p>
-                  <p class="text-muted text-xs mt-1">🇬🇧 United Kingdom · Cardiac Surgery</p>
-                </div>
-              </div>
-            </div>
+      <!-- Slide 2 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face"
+               alt="Sarah Mitchell" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">Sarah Mitchell</p>
+            <p class="text-muted text-sm">Australia · Knee Replacement</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
           </div>
+        </div>
+        <p class="text-muted text-sm leading-relaxed">
+          MediGlobal helped me get my knee replacement done in Thailand at a fraction of the local cost. My coordinator was available around the clock and the hospital was absolutely world-class.
+        </p>
+      </div>
 
-          <!-- Slide 2 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "MediGlobal helped me get my knee replacement done in Thailand at a fraction of the local cost. My coordinator was available around the clock and the hospital was absolutely world-class."
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face"
-                     alt="Sarah Mitchell" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">Sarah Mitchell</p>
-                  <p class="text-muted text-xs mt-1">🇦🇺 Australia · Knee Replacement</p>
-                </div>
-              </div>
-            </div>
+      <!-- Slide 3 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=face"
+               alt="Emily Clark" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">Emily &amp; Robert Clark</p>
+            <p class="text-muted text-sm">United States · IVF Treatment</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
           </div>
+        </div>
+        <p class="text-muted text-sm leading-relaxed">
+          The IVF treatment we underwent in India was a complete success. MediGlobal's team was compassionate, professional, and always available. We now have a beautiful baby girl!
+        </p>
+      </div>
 
-          <!-- Slide 3 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "The IVF treatment we underwent in India was a complete success. MediGlobal's team was compassionate, professional, and always available. We now have a beautiful baby girl!"
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face"
-                     alt="Emily Clark" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">Emily &amp; Robert Clark</p>
-                  <p class="text-muted text-xs mt-1">🇺🇸 United States · IVF Treatment</p>
-                </div>
-              </div>
-            </div>
+      <!-- Slide 4 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=face"
+               alt="Ahmed Al-Rashid" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">Ahmed Al-Rashid</p>
+            <p class="text-muted text-sm">Saudi Arabia · Cancer Treatment</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
           </div>
+        </div>
+        <p class="text-muted text-sm leading-relaxed">
+          I was diagnosed with early-stage cancer and MediGlobal connected me with a top oncology centre in Turkey. The treatment was excellent and 24/7 support gave my family great peace of mind.
+        </p>
+      </div>
 
-          <!-- Slide 4 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "I was diagnosed with early-stage cancer and MediGlobal connected me with a top oncology centre in Turkey. The treatment was excellent and 24/7 support gave my family great peace of mind."
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face"
-                     alt="Ahmed Al-Rashid" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">Ahmed Al-Rashid</p>
-                  <p class="text-muted text-xs mt-1">🇸🇦 Saudi Arabia · Cancer Treatment</p>
-                </div>
-              </div>
-            </div>
+      <!-- Slide 5 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=120&h=120&fit=crop&crop=face"
+               alt="Raj Patel" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">Raj Patel</p>
+            <p class="text-muted text-sm">Canada · Kidney Transplant</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
           </div>
+        </div>
+        <p class="text-muted text-sm leading-relaxed">
+          My mother needed a kidney transplant and MediGlobal found us the perfect hospital in Singapore. They handled everything from paperwork to post-op follow-ups. Truly remarkable service.
+        </p>
+      </div>
 
-          <!-- Slide 5 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "My mother needed a kidney transplant and MediGlobal found us the perfect hospital in Singapore. They handled everything from paperwork to post-op follow-ups. Truly remarkable service."
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=60&h=60&fit=crop&crop=face"
-                     alt="Raj Patel" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">Raj Patel</p>
-                  <p class="text-muted text-xs mt-1">🇨🇦 Canada · Kidney Transplant</p>
-                </div>
-              </div>
-            </div>
+      <!-- Slide 6 -->
+      <div class="testi-card">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=120&h=120&fit=crop&crop=face"
+               alt="Sophia Müller" class="!w-16 h-16 rounded-full object-cover flex-shrink-0">
+          <div>
+            <p class="font-semibold text-dark text-base leading-snug">Sophia Müller</p>
+            <p class="text-muted text-sm">Switzerland · Spine Surgery</p>
+            <p class="testi-stars mt-1" aria-label="5 stars">★★★★★</p>
           </div>
+        </div>
+        <p class="text-muted text-sm leading-relaxed">
+          I travelled to Germany for spinal surgery and saved over €40,000 compared to local quotes. MediGlobal's team made it seamless — visa approval in 4 days, airport pickup on arrival. Exceptional!
+        </p>
+      </div>
 
-          <!-- Slide 6 -->
-          <div class="t-slide">
-            <div class="bg-white rounded-2xl p-6 shadow-card border border-border h-full">
-              <p class="stars mb-4 text-lg" aria-label="5 stars">★★★★★</p>
-              <p class="text-dark text-sm leading-relaxed mb-6">
-                "I travelled to Germany for spinal surgery and saved over €40,000 compared to local quotes. MediGlobal's team made it seamless — visa approval in 4 days, airport pickup on arrival. Exceptional!"
-              </p>
-              <div class="flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=60&h=60&fit=crop&crop=face"
-                     alt="Sophia Müller" class="w-11 h-11 rounded-xl object-cover" loading="lazy">
-                <div>
-                  <p class="font-semibold text-dark text-sm leading-none">Sophia Müller</p>
-                  <p class="text-muted text-xs mt-1">🇨🇭 Switzerland · Spine Surgery</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /track -->
-      </div><!-- /overflow-hidden -->
-    </div>
+    </div><!-- /owl-carousel -->
   </div>
 </section>
 
@@ -1110,17 +1129,21 @@
      8. FAQ SECTION
 ============================================================ -->
 <section id="faq" class="py-20 lg:py-28 bg-white">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-12 fade-up">
       <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">FAQ</span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">Frequently Asked Questions</h2>
-      <div class="section-bar mb-5"></div>
-      <p class="text-muted text-base md:text-lg leading-relaxed">
+      <p class="text-muted text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
         Have questions? We have answers. If you don't find what you're looking for, contact our team directly.
       </p>
     </div>
 
+    <!-- 70/30 split -->
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+
+      <!-- Left: FAQ accordion (70%) -->
+      <div class="w-full lg:w-[60%]">
     <div class="space-y-3 fade-up" role="list">
 
       <!-- FAQ 1 -->
@@ -1232,6 +1255,21 @@
       </div>
 
     </div>
+      </div><!-- /left 70% -->
+
+      <!-- Right: image (30%) -->
+      <div class="w-full lg:w-[40%] fade-up lg:sticky lg:top-28">
+        <div class="rounded-2xl overflow-hidden shadow-xl h-72 lg:h-[500px]">
+          <img
+            src="assets/images/Untitled-2list-img2.jpg"
+            alt="Doctor answering patient questions"
+            class="w-full h-full object-cover object-right"
+            loading="lazy"
+          >
+        </div>
+      </div><!-- /right 30% -->
+
+    </div><!-- /split -->
   </div>
 </section>
 
@@ -1246,8 +1284,7 @@
       <!-- LEFT: Intro -->
       <div class="fade-up">
         <span class="inline-block text-primary text-xs font-semibold tracking-widest uppercase mb-3">Get Started</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">Book Your Free Consultation</h2>
-        <div class="section-bar left mb-6"></div>
+        <h2 class="text-3xl md:text-4xl lg:text-6xl font-normal text-dark mb-4">Book Your Free Consultation</h2>
         <p class="text-muted text-base md:text-lg leading-relaxed mb-8">
           Take the first step toward world-class healthcare. Our medical experts review your case and provide a personalised treatment plan within 24 hours.
         </p>
@@ -1291,7 +1328,7 @@
         <div class="bg-white rounded-2xl p-5 border border-border">
           <p class="text-sm font-semibold text-dark mb-3">Prefer to talk directly?</p>
           <div class="flex flex-wrap gap-4">
-            <a href="https://wa.me/1234567890"
+            <a href="https://wa.me/918733025959"
                class="flex items-center gap-2 text-accent font-semibold text-sm hover:underline"
                aria-label="Contact via WhatsApp">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -1299,20 +1336,20 @@
               </svg>
               WhatsApp Us
             </a>
-            <a href="tel:+18001234567"
+            <a href="tel:+918733025959"
                class="flex items-center gap-2 text-primary font-semibold text-sm hover:underline"
                aria-label="Call us">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
-              +1 800 123 4567
+              +91-8733025959
             </a>
           </div>
         </div>
       </div>
 
       <!-- RIGHT: Form -->
-      <div class="bg-white rounded-3xl p-8 shadow-card border border-border fade-up delay-2">
+      <div class="bg-white rounded-3xl p-5 sm:p-8 shadow-card border border-border fade-up delay-2">
 
         <div id="form-wrap">
           <form id="consult-form" novalidate aria-label="Free consultation request form">
@@ -1443,10 +1480,10 @@
             </p>
 
             <button type="submit"
-                    class="btn-primary w-full text-white font-semibold py-3.5 rounded-xl text-base flex items-center justify-center gap-2">
-              Submit Free Consultation Request
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    class="btn-primary w-full text-white font-semibold py-3.5 rounded-full text-base flex items-center justify-center gap-2">
+              Free Consultation Request
+              <svg class="w-5 h-5 hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M18 14V6H10"/>
               </svg>
             </button>
 
@@ -1492,20 +1529,44 @@
       <p class="text-white/80 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
         Join thousands of patients who have trusted MediGlobal for world-class healthcare. Your free consultation is one click away.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact"
-           class="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-4 rounded-xl text-base hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-          Free Consultation
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+
+        <!-- WhatsApp Now -->
+        <a href="https://wa.me/918733025959" target="_blank" rel="noopener"
+           class="relative inline-flex items-center justify-center w-full sm:w-56 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold px-5 py-3 rounded-full text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+           aria-label="WhatsApp Now">
+          <span class="absolute left-3 flex items-center justify-center w-8 h-8 bg-white/20 rounded-full flex-shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </span>
+          WhatsApp Now
         </a>
-        <a href="https://wa.me/1234567890"
-           class="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-base hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
-           aria-label="Contact us on WhatsApp">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          WhatsApp Support
+
+        <!-- Call Now -->
+        <a href="tel:+918733025959"
+           class="relative inline-flex items-center justify-center w-full sm:w-56 bg-white text-primary hover:bg-white/90 font-semibold px-5 py-3 rounded-full text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+           aria-label="Call Now">
+          <span class="absolute left-3 flex items-center justify-center w-8 h-8 bg-primary/10 rounded-full flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </span>
+          Call Now
         </a>
+
+        <!-- Send Reports -->
+        <a href="mailto:reports@example.com"
+           class="relative inline-flex items-center justify-center w-full sm:w-56 bg-white/10 border border-white/30 text-white hover:bg-white/20 font-semibold px-5 py-3 rounded-full text-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm"
+           aria-label="Send Reports">
+          <span class="absolute left-3 flex items-center justify-center w-8 h-8 bg-white/15 rounded-full flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </span>
+          Send Reports
+        </a>
+
       </div>
     </div>
   </div>
@@ -1524,13 +1585,8 @@
 
       <!-- Company -->
       <div>
-        <a href="#home" class="flex items-center gap-2.5 mb-5" aria-label="MediGlobal">
-          <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
-            </svg>
-          </div>
-          <span class="text-xl font-bold">Medi<span class="text-secondary">Global</span></span>
+        <a href="#home" class="inline-flex mb-5" aria-label="MediGlobal">
+          <img src="assets/images/logo-white.png" alt="MediGlobal Logo" class="h-12">
         </a>
         <p class="text-white/55 text-sm leading-relaxed font-light mb-6">
           Your trusted partner for world-class healthcare and medical tourism. Connecting patients with internationally accredited hospitals since 2015.
@@ -1545,7 +1601,7 @@
           <a href="#" aria-label="LinkedIn" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://wa.me/1234567890" aria-label="WhatsApp" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
+          <a href="https://wa.me/918733025959" aria-label="WhatsApp" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </a>
         </div>
@@ -1593,7 +1649,7 @@
             <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
-            <a href="tel:+18001234567" class="text-white/55 text-sm hover:text-white transition-colors font-light">+1 800 123 4567</a>
+            <a href="tel:+918733025959" class="text-white/55 text-sm hover:text-white transition-colors font-light">+91-8733025959</a>
           </li>
           <li class="flex items-start gap-3">
             <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -1617,7 +1673,7 @@
     <!-- Footer bottom -->
     <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-white/35 text-xs font-light">
-        &copy; <span id="footer-year"></span> MediGlobal. All rights reserved.
+        &copy; <span id="footer-year"></span> Livonta Global. All Rights Reserved. | Design &amp; Developed by <a href="https://brandhype.in" target="_blank" rel="noopener" class="hover:text-white transition-colors">Brandhype.in</a>
       </p>
       <div class="flex gap-6">
         <a href="#" class="text-white/35 text-xs hover:text-white/65 transition-colors font-light">Privacy Policy</a>
@@ -1630,10 +1686,106 @@
 </footer>
 
 
+<!-- ============================================================
+     RIGHT-SIDE NAVIGATION DRAWER
+============================================================ -->
+
+<!-- Overlay -->
+<div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+
+<!-- Drawer -->
+<aside id="nav-drawer" class="nav-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+
+  <!-- Top row: logo + close -->
+  <div class="drawer-top">
+    <a href="#home" class="drawer-logo" aria-label="MediGlobal — home">
+      <img src="assets/images/logo.png" alt="MediGlobal" class="h-10">
+    </a>
+    <button id="drawer-close" class="drawer-close-btn" aria-label="Close navigation menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Nav items -->
+  <nav class="drawer-nav" aria-label="Drawer navigation">
+    <ul>
+      <li><a href="#home"         class="drawer-link">Home</a></li>
+      <li><a href="#treatments"   class="drawer-link">Treatments</a></li>
+      <li><a href="#services"     class="drawer-link">Services</a></li>
+      <li><a href="#hospitals"    class="drawer-link">Hospitals</a></li>
+      <li><a href="#testimonials" class="drawer-link">Testimonials</a></li>
+      <li><a href="#faq"          class="drawer-link">FAQ</a></li>
+      <li><a href="#contact"      class="drawer-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- CTA row -->
+  <div class="drawer-cta-row">
+    <a href="#contact" class="drawer-cta-text">Get Free Consultation</a>
+    <a href="#contact" class="drawer-cta-circle" aria-label="Get Free Consultation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 18L18 6M18 14V6H10"/>
+      </svg>
+    </a>
+  </div>
+
+  <hr class="drawer-divider">
+
+  <!-- Footer: contact + social -->
+  <div class="drawer-footer">
+    <div class="drawer-contacts">
+      <div class="drawer-contact-item">
+        <span class="drawer-contact-label">E-mail</span>
+        <a href="mailto:livontaglobal@gmail.com" class="drawer-contact-value">livontaglobal@gmail.com</a>
+      </div>
+      <div class="drawer-contact-item">
+        <span class="drawer-contact-label">Phone</span>
+        <a href="tel:+918733025959" class="drawer-contact-value">+91-8733025959</a>
+      </div>
+    </div>
+
+    <div class="drawer-social">
+      <!-- Facebook -->
+      <a href="#" aria-label="Facebook" class="drawer-social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+        </svg>
+      </a>
+      <!-- Instagram -->
+      <a href="#" aria-label="Instagram" class="drawer-social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"/>
+        </svg>
+      </a>
+      <!-- Twitter / X -->
+      <a href="#" aria-label="Twitter" class="drawer-social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="#" aria-label="LinkedIn" class="drawer-social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <!-- YouTube -->
+      <a href="#" aria-label="YouTube" class="drawer-social-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</aside>
+
 <!-- Back to top button -->
 <button id="back-to-top"
         aria-label="Back to top"
-        class="w-12 h-12 bg-primary text-white rounded-xl shadow-lg flex items-center justify-center hover:bg-primary-700 hover:-translate-y-1 transition-all duration-300">
+        class="w-12 h-12 bg-dark text-white rounded-full shadow-lg flex items-center justify-center hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300">
   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
   </svg>
@@ -1641,5 +1793,33 @@
 
 
 <script src="script.js"></script>
+
+<!-- jQuery + Owl Carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+  $(function () {
+    $('.testimonial-owl').owlCarousel({
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      autoplayHoverPause: true,
+      smartSpeed: 600,
+      dots: true,
+      nav: true,
+      navText: [
+        '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>'
+      ],
+      margin: 16,
+      responsive: {
+        0:    { items: 1 },
+        640:  { items: 1 },
+        768:  { items: 2 },
+        1024: { items: 3 }
+      }
+    });
+  });
+</script>
 </body>
 </html>

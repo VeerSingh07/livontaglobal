@@ -18,28 +18,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================
-     2. MOBILE MENU TOGGLE
+     2. RIGHT-SIDE DRAWER NAVIGATION
   ========================================== */
-  const menuBtn   = document.getElementById('menu-btn');
-  const mobileNav = document.getElementById('mobile-menu');
-  const iconOpen  = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
+  const menuBtn       = document.getElementById('menu-btn');
+  const drawer        = document.getElementById('nav-drawer');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerClose   = document.getElementById('drawer-close');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    menuBtn.classList.add('active');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    menuBtn.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
   menuBtn.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('open');
-    iconOpen.classList.toggle('hidden', isOpen);
-    iconClose.classList.toggle('hidden', !isOpen);
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
-  // Close on any nav link click
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
+  drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // Close on any drawer link click
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
 
 
@@ -105,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const statsSection = document.getElementById('hero-stats');
+  const statsSection = document.getElementById('stats-section');
   if (statsSection) {
     const counterObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !countStarted) {
@@ -113,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         runCounters();
         counterObserver.disconnect();
       }
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
     counterObserver.observe(statsSection);
   }
 

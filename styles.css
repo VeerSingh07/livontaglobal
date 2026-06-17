@@ -20,8 +20,8 @@ body {
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #F8FAFC; }
-::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+::-webkit-scrollbar-thumb { background: #1D538E; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #143C65; }
 
 /* =============================================
    ANIMATIONS
@@ -106,7 +106,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+  background: linear-gradient(135deg, #1D538E 0%, #0EA5E9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -119,29 +119,359 @@ body {
 }
 
 /* =============================================
+   HAMBURGER BUTTON
+   ============================================= */
+
+.drawer-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid #CBD5E1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+.drawer-hamburger:hover {
+  background: #F8FAFC;
+  border-color: #1D538E;
+}
+.drawer-hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: #1D538E;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.drawer-hamburger.active {
+  border-color: #1D538E;
+  background: #F1F5F9;
+}
+.drawer-hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.drawer-hamburger.active span:nth-child(2) { opacity: 0; }
+.drawer-hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* =============================================
+   DRAWER OVERLAY
+   ============================================= */
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =============================================
+   RIGHT SIDE DRAWER
+   ============================================= */
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  min-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 36px 40px 36px;
+  overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+}
+.nav-drawer.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .nav-drawer { width: 85%; padding: 28px 24px; }
+}
+@media (max-width: 480px) {
+  .nav-drawer { width: 100%; }
+}
+
+/* Drawer top row */
+.drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.drawer-close-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  color: #0F172A;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.drawer-close-btn:hover {
+  background: #F1F5F9;
+  border-color: #0F172A;
+}
+
+/* Nav links */
+.drawer-nav {
+  flex: 1;
+  margin-bottom: 32px;
+}
+.drawer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.drawer-link {
+  display: block;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: #0F172A;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+}
+.drawer-link:hover {
+  color: #1D538E;
+  padding-left: 8px;
+}
+
+/* CTA row */
+.drawer-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.drawer-cta-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748B;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.drawer-cta-text:hover { color: #0F172A; }
+.drawer-cta-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0F172A;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.drawer-cta-circle:hover {
+  background: #1D538E;
+  border-color: #1D538E;
+  color: #fff;
+}
+
+/* Divider */
+.drawer-divider {
+  border: none;
+  border-top: 1px solid #E2E8F0;
+  margin-bottom: 24px;
+}
+
+/* Footer: contacts + social */
+.drawer-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.drawer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.drawer-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.drawer-contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+}
+.drawer-contact-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.drawer-contact-value:hover { color: #1D538E; }
+
+/* Social icons */
+.drawer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.drawer-social-link {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.drawer-social-link:hover {
+  color: #0F172A;
+  background: #F1F5F9;
+}
+
+/* =============================================
+   TOP CONTACT CHIPS
+   ============================================= */
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 5px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0F172A;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+.contact-chip:hover {
+  border-color: #0F172A;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.10);
+}
+.contact-chip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #1D538E;
+  border-radius: 999px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.contact-chip-icon svg {
+  stroke: #ffffff;
+}
+
+/* Hide text on mobile — icon only */
+.contact-chip-text {
+  padding-right: 8px;
+}
+@media (max-width: 991px) {
+  .contact-chip-text { display: none; }
+  .contact-chip { padding: 5px 5px; }
+}
+
+/* =============================================
    BUTTONS
    ============================================= */
 
 .btn-primary {
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background-color: #1D538E;
+  box-shadow: 0 4px 16px rgba(29, 83, 142, 0.30);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
 }
 .btn-primary:hover {
+  background-color: #143C65;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.42);
+  box-shadow: 0 8px 28px rgba(29, 83, 142, 0.40);
 }
 .btn-primary:active { transform: translateY(0); }
 
+/* Arrow icon — circular badge inside primary buttons */
+.btn-primary svg {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  padding: 3px;
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+  min-width: 21px;
+  min-height: 21px;
+}
+.btn-primary:hover svg {
+  background: rgba(255, 255, 255, 0.28);
+}
+
 .btn-outline {
-  border: 2px solid #2563EB;
-  color: #2563EB;
+  border: 2px solid #1D538E;
+  color: #1D538E;
   transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 .btn-outline:hover {
-  background: #2563EB;
+  background: #1D538E;
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* Hero secondary (white-border pill) */
+.btn-outline-hero {
+  border: 2px solid rgba(255,255,255,0.45);
+  color: #fff;
+  transition: background 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+.btn-outline-hero:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+.btn-outline-hero svg {
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+  padding: 5px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 /* =============================================
@@ -167,15 +497,16 @@ body {
   transform: scale(1.07);
 }
 
-/* Section label / divider */
-.section-bar {
-  width: 56px;
-  height: 4px;
-  background: linear-gradient(90deg, #2563EB, #0EA5E9);
-  border-radius: 2px;
-  margin: 0 auto;
+
+/* Services section — center content on mobile */
+@media (max-width: 767px) {
+  #services .grid > div:first-child {
+    text-align: center;
+  }
+  #services .grid > div:first-child .flex {
+    justify-content: center;
+  }
 }
-.section-bar.left { margin: 0; }
 
 /* =============================================
    WHY CHOOSE US — panel layout
@@ -193,12 +524,10 @@ body {
 @media (max-width: 1023px) {
   .why-doctor-wrap {
     padding-top: 0;
-    max-height: 280px;
     overflow: hidden;
   }
   .why-doctor-wrap img {
     width: 100%;
-    max-height: 280px;
     object-fit: cover;
     object-position: top center;
   }
@@ -212,7 +541,7 @@ body {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .treatment-card:hover .treat-icon-wrap {
-  background: #2563EB;
+  background: #1D538E;
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
 }
 .treatment-card:hover .treat-icon {
@@ -233,6 +562,56 @@ body {
   box-shadow: 0 12px 32px rgba(0,0,0,0.08);
 }
 
+/* Learn More button — light pill, full width, pinned to card bottom */
+.treat-learn-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 10px 10px 20px;
+  background: #F1F5F9;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.treat-learn-more:hover {
+  background: #E2E8F0;
+  color: #1D538E;
+}
+
+/* Circular arrow badge */
+.treat-learn-more svg {
+  background: rgba(71, 85, 105, 0.12);
+  border-radius: 50%;
+  padding: 4px;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  min-width: 22px;
+  min-height: 22px;
+  transition: background 0.2s ease;
+}
+.treat-learn-more:hover svg {
+  background: rgba(71, 85, 105, 0.20);
+}
+
+/* On dark navy card hover — adapt to white */
+.treat-hoverable:hover .treat-learn-more {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+.treat-hoverable:hover .treat-learn-more svg {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+.treat-hoverable:hover .treat-learn-more:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+}
+
 /* Hoverable cards: white default → dark navy on hover */
 .treat-hoverable {
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
@@ -240,6 +619,9 @@ body {
 .treat-hoverable h3,
 .treat-hoverable p {
   transition: color 0.3s ease;
+}
+.treat-hoverable p {
+  margin-bottom: 16px;
 }
 .treat-hoverable > div {
   transition: background-color 0.3s ease;
@@ -303,8 +685,36 @@ body {
    PROCESS TIMELINE
    ============================================= */
 
-.timeline-line {
-  background: linear-gradient(90deg, #2563EB, #0EA5E9, #10B981);
+/* How It Works — step row */
+.hiw-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.hiw-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hiw-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.hiw-desc {
+  font-size: 0.82rem;
+  color: #64748B;
+  line-height: 1.6;
 }
 
 /* =============================================
@@ -351,7 +761,7 @@ body {
 }
 .form-field:focus {
   outline: none;
-  border-color: #2563EB;
+  border-color: #1D538E;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 .form-field.err {
@@ -382,11 +792,11 @@ body {
 }
 
 .badge-jci   { background: linear-gradient(135deg, #10B981, #059669); }
-.badge-iso   { background: linear-gradient(135deg, #2563EB, #1D4ED8); }
+.badge-iso   { background: linear-gradient(135deg, #1D538E, #143C65); }
 
 .spec-tag {
   background: rgba(37, 99, 235, 0.08);
-  color: #2563EB;
+  color: #1D538E;
   font-size: 10.5px;
   font-weight: 600;
   padding: 3px 10px;
@@ -404,6 +814,35 @@ body {
   cursor: default;
 }
 .logo-item:hover { opacity: 1; }
+
+/* Hospital logo strip */
+.hospital-logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.50;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+.hospital-logo-item:hover { opacity: 1; }
+
+.hospital-logo-img {
+  height: 32px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+.hospital-logo-item:hover .hospital-logo-img { filter: grayscale(0); }
+
+.hospital-logo-fallback {
+  display: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
 
 /* =============================================
    CTA SECTION
@@ -447,10 +886,123 @@ body {
 }
 
 /* =============================================
+   STATS COUNTER STRIP
+   ============================================= */
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.stat-number {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  color: #0F172A;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #64748B;
+  letter-spacing: 0.01em;
+}
+
+/* =============================================
    STARS RATING
    ============================================= */
 
 .stars { color: #F59E0B; letter-spacing: 1px; }
+
+/* =============================================
+   TESTIMONIAL CARDS (Owl Carousel)
+   ============================================= */
+
+.testimonial-owl .owl-stage {
+  display: flex;
+}
+.testimonial-owl .owl-item {
+  display: flex;
+}
+.testi-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testi-stars {
+  color: #F59E0B;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* Owl Carousel nav buttons */
+@media (max-width: 767px) {
+  .testimonial-owl .owl-nav { display: none !important; }
+}
+.testimonial-owl .owl-dots{
+  display: none !important;
+}
+
+.owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #64748B !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 10;
+}
+.testimonial-owl .owl-nav button svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+.testimonial-owl .owl-nav button:hover {
+  background: #1D538E !important;
+  border-color: #1D538E !important;
+  color: #ffffff !important;
+}
+.testimonial-owl .owl-nav button:hover svg {
+  stroke: #ffffff;
+}
+.testimonial-owl .owl-nav .owl-prev { left: -20px; }
+.testimonial-owl .owl-nav .owl-next { right: -20px; }
+
+/* Owl dots */
+.testimonial-owl .owl-dots {
+  margin-top: 32px;
+  text-align: center;
+}
+.testimonial-owl .owl-dot span {
+  width: 8px !important;
+  height: 8px !important;
+  background: #CBD5E1 !important;
+  border-radius: 99px !important;
+  transition: width 0.3s ease, background 0.3s ease !important;
+}
+.testimonial-owl .owl-dot.active span {
+  width: 24px !important;
+  background: #1D538E !important;
+}
 
 /* =============================================
    ACCREDITATION TAG ON HOSPITAL
