@@ -1,5 +1,5 @@
 /* =============================================
-   MediGlobal — Healthcare Medical Tourism
+   Livonta Global — Healthcare Medical Tourism
    Main JavaScript
    ============================================= */
 
